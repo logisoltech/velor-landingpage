@@ -63,37 +63,37 @@ export const SHOWCASE_CATEGORIES = [
   {
     title: "T-Shirts",
     href: "#t-shirts",
-    image: FASHION_IMAGE_URLS.showcaseTShirts,
+    image: "/tsh.webp" ,
     alt: "Male model wearing a premium t-shirt",
   },
   {
     title: "Polos",
     href: "#polos",
-    image: FASHION_IMAGE_URLS.showcasePolos,
+    image: "/polos.jpg",
     alt: "Male model wearing a knit polo shirt",
   },
   {
     title: "Shirts",
     href: "#shirts",
-    image: FASHION_IMAGE_URLS.showcaseShirts,
+    image: "/shirts.webp",
     alt: "Male model wearing a tailored shirt",
   },
   {
     title: "Activewear",
     href: "#activewear",
-    image: FASHION_IMAGE_URLS.showcaseActivewear,
+    image: "/activewear.jpg",
     alt: "Male model in premium activewear",
   },
   {
     title: "Denim",
     href: "#denim",
-    image: FASHION_IMAGE_URLS.showcaseDenim,
+    image: "/denim.webp",
     alt: "Male model wearing denim jeans",
   },
   {
     title: "Trousers",
     href: "#trousers",
-    image: FASHION_IMAGE_URLS.showcaseTrousers,
+    image: "/trousers.webp",
     alt: "Male model wearing tailored trousers",
   },
 ];

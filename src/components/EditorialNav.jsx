@@ -21,7 +21,7 @@ function CategorySequence({ duplicate = false }) {
         <span key={`${item.id}-${duplicate ? "dup" : "orig"}`} className="editorial-nav__item">
           {index > 0 ? (
             <span className="editorial-nav__comma" aria-hidden="true">
-              ,
+              &nbsp;|&nbsp;
             </span>
           ) : null}
           <button type="button" className="editorial-nav__word" tabIndex={duplicate ? -1 : 0}>
