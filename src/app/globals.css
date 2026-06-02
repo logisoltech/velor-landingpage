@@ -1481,6 +1481,7 @@ a {
 }
 
 .summer-pause__banner {
+  position: relative;
   width: 100%;
   height: clamp(22rem, 55vh, 65vh);
   overflow: hidden;
@@ -1503,6 +1504,7 @@ a {
 
 .summer-pause__banner-slide {
   flex: 0 0 100%;
+  min-width: 100%;
   width: 100%;
   height: 100%;
 }

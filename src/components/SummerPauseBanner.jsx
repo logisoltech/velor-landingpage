@@ -1,13 +1,16 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { bannerImages } from "@/data/summerPauseAssets";
 
 const SLIDE_INTERVAL_MS = 3000;
+const TRANSITION_MS = 1100;
+const CLONE_INDEX = bannerImages.length;
 
 export default function SummerPauseBanner() {
   const [trackIndex, setTrackIndex] = useState(0);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
+  const resetPendingRef = useRef(false);
 
   const extendedSlides = useMemo(
     () => [...bannerImages, bannerImages[0]],
@@ -15,33 +18,51 @@ export default function SummerPauseBanner() {
   );
 
   const goToNext = useCallback(() => {
+    if (resetPendingRef.current) return;
+
     setTransitionEnabled(true);
-    setTrackIndex((prev) => prev + 1);
+    setTrackIndex((prev) => {
+      if (prev >= CLONE_INDEX) return prev;
+      return prev + 1;
+    });
+  }, []);
+
+  const resetToStart = useCallback(() => {
+    if (resetPendingRef.current) return;
+
+    resetPendingRef.current = true;
+    setTransitionEnabled(false);
+    setTrackIndex(0);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setTransitionEnabled(true);
+        resetPendingRef.current = false;
+      });
+    });
   }, []);
 
   useEffect(() => {
-    if (!transitionEnabled) return;
+    if (!transitionEnabled || resetPendingRef.current) return;
 
     const timer = window.setTimeout(goToNext, SLIDE_INTERVAL_MS);
     return () => window.clearTimeout(timer);
   }, [trackIndex, transitionEnabled, goToNext]);
 
-  const handleTrackTransitionEnd = () => {
-    if (trackIndex !== bannerImages.length) return;
-
-    setTransitionEnabled(false);
-    setTrackIndex(0);
-  };
-
   useEffect(() => {
-    if (transitionEnabled || trackIndex !== 0) return;
+    if (trackIndex !== CLONE_INDEX || !transitionEnabled) return;
 
-    const frame = window.requestAnimationFrame(() => {
-      setTransitionEnabled(true);
-    });
+    const fallback = window.setTimeout(resetToStart, TRANSITION_MS + 50);
+    return () => window.clearTimeout(fallback);
+  }, [trackIndex, transitionEnabled, resetToStart]);
 
-    return () => window.cancelAnimationFrame(frame);
-  }, [transitionEnabled, trackIndex]);
+  const handleTrackTransitionEnd = (event) => {
+    if (event.propertyName !== "transform") return;
+    if (event.target !== event.currentTarget) return;
+    if (trackIndex !== CLONE_INDEX) return;
+
+    resetToStart();
+  };
 
   return (
     <div className="summer-pause__banner">
@@ -55,7 +76,7 @@ export default function SummerPauseBanner() {
         onTransitionEnd={handleTrackTransitionEnd}
       >
         {extendedSlides.map((src, index) => (
-          <div key={`${src}-${index}`} className="summer-pause__banner-slide">
+          <div key={`banner-slide-${index}`} className="summer-pause__banner-slide">
             <img
               src={src}
               alt=""
