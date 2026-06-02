@@ -102,23 +102,25 @@ export default function MustHaves() {
                     <p className="must-haves__product-meta">{product.meta}</p>
                     <p className="must-haves__product-price">{product.price}</p>
 
-                    <ul
-                      className="must-haves__swatches"
-                      aria-label="Available colors"
-                    >
-                      {product.colors.map((color, index) => (
-                        <li key={`${product.id}-${color}`}>
-                          <span
-                            className={`must-haves__swatch ${
-                              index === product.activeColor
-                                ? "must-haves__swatch--active"
-                                : ""
-                            }`}
-                            style={{ backgroundColor: color }}
-                          />
-                        </li>
-                      ))}
-                    </ul>
+                    {activeTab !== "fragrances" && (
+                      <ul
+                        className="must-haves__swatches"
+                        aria-label="Available colors"
+                      >
+                        {product.colors.map((color, index) => (
+                          <li key={`${product.id}-${color}`}>
+                            <span
+                              className={`must-haves__swatch ${
+                                index === product.activeColor
+                                  ? "must-haves__swatch--active"
+                                  : ""
+                              }`}
+                              style={{ backgroundColor: color }}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </Link>
               </li>
