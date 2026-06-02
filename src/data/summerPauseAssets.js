@@ -1,21 +1,33 @@
-
-export const bannerImages = [
-  "/banner12.webp",
-  "https://outfitters.com.pk/cdn/shop/files/6_9a0175d7-612f-480e-a502-e7a7405996f7_1600x.jpg?v=1778754799",
-  "https://outfitters.com.pk/cdn/shop/files/6_9a0175d7-612f-480e-a502-e7a7405996f7_1600x.jpg?v=1778754799",
+export const bannerSlides = [
+  {
+    image: "/banner12.webp",
+    title: "SUMMER ESSENTIALS",
+    subtitle: "Lightweight pieces for everyday ease.",
+  },
+  {
+    image: "/banner13.webp",
+    title: "RELAXED SILHOUETTES",
+    subtitle: "Soft textures made for slow days.",
+  },
+  {
+    image:
+      "https://outfitters.com.pk/cdn/shop/files/6_9a0175d7-612f-480e-a502-e7a7405996f7_1600x.jpg?v=1778754799",
+    title: "NEW SEASON LAYERS",
+    subtitle: "Modern comfort in timeless tones.",
+  },
 ];
 
 export const SUMMER_PAUSE_IMAGES = {
   basicTankTop:
-    "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
+    "/w11.webp",
   straightFitTrousers:
-    "https://images.pexels.com/photos/4641869/pexels-photo-4641869.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
+    "w2.webp",
   doubleBuckleFlats:
-    "https://images.pexels.com/photos/1124468/pexels-photo-1124468.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
+    "/w3.webp ",
   sloganTee:
-    "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&h=750&q=85",
+    "/w4.webp",
   knitShorts:
-    "https://images.pexels.com/photos/834863/pexels-photo-834863.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
+    "/w5.webp",
   suedeClogs:
     "https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop",
 };
@@ -31,56 +43,56 @@ export const SUMMER_PAUSE_ASSETS = {
   products: [
     {
       id: "sp-tank",
-      title: "BASIC TANK TOP",
-      meta: "SLIM FIT | MEN",
-      price: "PKR 1,890",
-      image: SUMMER_PAUSE_IMAGES.basicTankTop,
-      alt: "Basic grey tank top on light background",
+      title: "Graphic T-Shirt",
+      meta: "Relaxed Fit | Women",
+      price: "€79",
+      image: "/w11.webp",
+      alt: "Essential linen t-shirt",
       comingSoon: false,
     },
     {
       id: "sp-trousers",
-      title: "STRAIGHT FIT TROUSERS",
-      meta: "STRAIGHT FIT | MEN",
-      price: "PKR 6,990",
-      image: SUMMER_PAUSE_IMAGES.straightFitTrousers,
-      alt: "Beige straight fit trousers on light background",
+      title: "Button Up Shirt",
+      meta: "Relaxed Fit",
+      price: "€89",
+      image: "/w2.webp",
+      alt: "Comfortable button-up shirt",
       comingSoon: true,
     },
     {
       id: "sp-flats",
-      title: "DOUBLE BUCKLE STRAP FLATS",
-      meta: "MEN",
-      price: "PKR 5,990",
-      image: SUMMER_PAUSE_IMAGES.doubleBuckleFlats,
-      alt: "Double buckle strap flat sandals",
+      title: "Textured Shirt",
+      meta: "Relaxed Fit",
+      price: "€59",
+      image: "/w3.webp",
+      alt: "Textured shirt with interesting texture pattern",
       comingSoon: false,
     },
     {
       id: "sp-tee",
-      title: "TEXTURED SLOGAN PRINT T-SHIRT",
-      meta: "RELAXED FIT | MEN",
-      price: "PKR 3,690",
-      image: SUMMER_PAUSE_IMAGES.sloganTee,
-      alt: "Textured slogan print t-shirt",
+      title: "Graphic T-Shirt (Juniors)",
+      meta: "Relaxed Fit | Juniors",
+      price: "€39",
+      image: "/w4.webp",
+      alt: "Graphic t-shirt with interesting design for juniors",
       comingSoon: false,
     },
     {
       id: "sp-shorts",
-      title: "KNIT SHORTS",
-      meta: "RELAXED FIT | MEN",
-      price: "PKR 3,990",
-      image: SUMMER_PAUSE_IMAGES.knitShorts,
-      alt: "Black knit shorts on light background",
+      title: "Embroidered Schiffli Blouse",
+      meta: "Relaxed Fit (Juniors)",
+      price: "€39",
+      image: "/w5.webp",
+      alt: "Embroidered schiffli blouse",
       comingSoon: false,
     },
     {
       id: "sp-clogs",
-      title: "SUEDE CLOGS",
-      meta: "MEN",
-      price: "PKR 6,990",
-      image: SUMMER_PAUSE_IMAGES.suedeClogs,
-      alt: "Tan suede clogs on light background",
+      title: "Suede Loafers",
+      meta: "Juniors",
+      price: "€69",
+      image: "/w6.webp",
+      alt: "Suede loafers",
       comingSoon: false,
     },
   ],

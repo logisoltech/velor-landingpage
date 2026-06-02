@@ -1352,12 +1352,19 @@ a {
 }
 
 .editorial-nav {
+  --editorial-nav-pad: clamp(2.5rem, 6vw, 9rem);
   display: flex;
   align-items: center;
   width: 100%;
   overflow: hidden;
   background-color: var(--color-ivory);
-  padding: clamp(2.5rem, 6vw, 9rem) 0;
+  padding-top: var(--editorial-nav-pad);
+  padding-bottom: var(--editorial-nav-pad);
+}
+
+/* Must-haves bottom padding sits above this section; mirror it below the text */
+.must-haves + .editorial-nav {
+  padding-bottom: calc(var(--editorial-nav-pad) + 3.5rem);
 }
 
 .editorial-nav__viewport {
@@ -1371,6 +1378,7 @@ a {
 
 .editorial-nav__track {
   display: flex;
+  align-items: center;
   width: max-content;
   animation: editorial-nav-marquee 30s linear infinite;
   will-change: transform;
@@ -1378,7 +1386,7 @@ a {
 
 .editorial-nav__sequence {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   flex-shrink: 0;
   white-space: nowrap;
 }
@@ -1442,6 +1450,10 @@ a {
 }
 
 @media (min-width: 768px) {
+  .must-haves + .editorial-nav {
+    padding-bottom: calc(var(--editorial-nav-pad) + 4rem);
+  }
+
   .editorial-nav__comma,
   .editorial-nav__separator,
   .editorial-nav__word {
@@ -1503,6 +1515,7 @@ a {
 }
 
 .summer-pause__banner-slide {
+  position: relative;
   flex: 0 0 100%;
   min-width: 100%;
   width: 100%;
@@ -1515,6 +1528,55 @@ a {
   height: 100%;
   object-fit: cover;
   object-position: 42% 40%;
+}
+
+.summer-pause__banner-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.12) 0%,
+    rgba(0, 0, 0, 0.28) 45%,
+    rgba(0, 0, 0, 0.42) 100%
+  );
+  pointer-events: none;
+}
+
+.summer-pause__banner-copy {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(1.5rem, 5vw, 3rem);
+  text-align: center;
+  pointer-events: none;
+}
+
+.summer-pause__banner-title {
+  max-width: 20ch;
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 4.5vw, 3.25rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.summer-pause__banner-subtitle {
+  margin-top: clamp(0.75rem, 2vw, 1.25rem);
+  max-width: 28rem;
+  font-family: var(--font-sans);
+  font-size: clamp(0.8125rem, 1.6vw, 0.9375rem);
+  font-weight: 300;
+  line-height: 1.75;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.88);
 }
 
 @media (min-width: 768px) {

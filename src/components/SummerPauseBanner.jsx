@@ -1,11 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { bannerImages } from "@/data/summerPauseAssets";
+import { bannerSlides } from "@/data/summerPauseAssets";
 
 const SLIDE_INTERVAL_MS = 3000;
 const TRANSITION_MS = 1100;
-const CLONE_INDEX = bannerImages.length;
+const CLONE_INDEX = bannerSlides.length;
 
 export default function SummerPauseBanner() {
   const [trackIndex, setTrackIndex] = useState(0);
@@ -13,7 +13,7 @@ export default function SummerPauseBanner() {
   const resetPendingRef = useRef(false);
 
   const extendedSlides = useMemo(
-    () => [...bannerImages, bannerImages[0]],
+    () => [...bannerSlides, bannerSlides[0]],
     []
   );
 
@@ -75,15 +75,20 @@ export default function SummerPauseBanner() {
         style={{ transform: `translateX(-${trackIndex * 100}%)` }}
         onTransitionEnd={handleTrackTransitionEnd}
       >
-        {extendedSlides.map((src, index) => (
+        {extendedSlides.map((slide, index) => (
           <div key={`banner-slide-${index}`} className="summer-pause__banner-slide">
             <img
-              src={src}
+              src={slide.image}
               alt=""
               className="summer-pause__banner-image"
               loading={index === 0 ? "eager" : "lazy"}
               decoding="async"
             />
+            <div className="summer-pause__banner-scrim" aria-hidden="true" />
+            <div className="summer-pause__banner-copy">
+              <h2 className="summer-pause__banner-title">{slide.title}</h2>
+              <p className="summer-pause__banner-subtitle">{slide.subtitle}</p>
+            </div>
           </div>
         ))}
       </div>
