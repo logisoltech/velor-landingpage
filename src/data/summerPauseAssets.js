@@ -1,6 +1,6 @@
 
 export const bannerImages = [
-  "https://outfitters.com.pk/cdn/shop/files/6_9a0175d7-612f-480e-a502-e7a7405996f7_1600x.jpg?v=1778754799",
+  "/banner12.webp",
   "https://outfitters.com.pk/cdn/shop/files/6_9a0175d7-612f-480e-a502-e7a7405996f7_1600x.jpg?v=1778754799",
   "https://outfitters.com.pk/cdn/shop/files/6_9a0175d7-612f-480e-a502-e7a7405996f7_1600x.jpg?v=1778754799",
 ];
