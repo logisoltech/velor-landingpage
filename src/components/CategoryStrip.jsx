@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { WOMEN_CATEGORY_BLOCKS } from "@/data/womenCategoryBlocks";
 
-export default function WomenCategoryBlocks() {
+export default function CategoryStrip() {
   return (
     <section className="women-blocks" aria-label="Shop by category">
       <div className="women-blocks__grid">

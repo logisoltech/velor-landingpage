@@ -1,6 +1,6 @@
 /**
- * WOMEN page — Section 2 (Categories in Focus)
- * Replace featuredImage and product image paths below.
+ * WOMEN page — Categories in Focus
+ * Edit the arrays below to swap images and product copy.
  */
 
 export const WOMEN_FOCUS_FEATURED = {
@@ -14,11 +14,11 @@ export const WOMEN_FOCUS_CATEGORIES = [
   { id: "trousers", label: "TROUSERS" },
 ];
 
-export const WOMEN_FOCUS_PRODUCTS = [
+/** TEES & POLOS — 8 products (replace image paths as needed) */
+export const WOMEN_FOCUS_TEES_POLOS = [
   {
-    id: "focus-1",
-    category: "tees-polos",
-    image: "/w4.webp", // product1
+    id: "tees-1",
+    image: "/w4.webp",
     alt: "Cropped graphic t-shirt",
     title: "CROPPED GRAPHIC T-SHIRT",
     fit: "REGULAR FIT | WOMEN",
@@ -27,9 +27,8 @@ export const WOMEN_FOCUS_PRODUCTS = [
     colorBorder: true,
   },
   {
-    id: "focus-2",
-    category: "tees-polos",
-    image: "/w5.webp", // product2
+    id: "tees-2",
+    image: "/w5.webp",
     alt: "Graphic t-shirt",
     title: "GRAPHIC T-SHIRT",
     fit: "RELAXED FIT | WOMEN",
@@ -38,9 +37,8 @@ export const WOMEN_FOCUS_PRODUCTS = [
     colorBorder: true,
   },
   {
-    id: "focus-3",
-    category: "tees-polos",
-    image: "/w6.webp", // product3
+    id: "tees-3",
+    image: "/w6.webp",
     alt: "Graphic t-shirt on model",
     title: "GRAPHIC T-SHIRT",
     fit: "RELAXED FIT | WOMEN",
@@ -49,10 +47,63 @@ export const WOMEN_FOCUS_PRODUCTS = [
     colorBorder: false,
   },
   {
-    id: "focus-4",
-    category: "dresses",
-    image: "/d2.webp", // product4
-    alt: "Midi dress",
+    id: "tees-4",
+    image: "/w1.webp",
+    alt: "Essential cotton tee",
+    title: "ESSENTIAL COTTON TEE",
+    fit: "REGULAR FIT | WOMEN",
+    price: "PKR 1,990",
+    color: "#e8e4dc",
+    colorBorder: true,
+  },
+  {
+    id: "tees-5",
+    image: "/w2.webp",
+    alt: "Relaxed fit tee",
+    title: "RELAXED FIT TEE",
+    fit: "RELAXED FIT | WOMEN",
+    price: "PKR 2,190",
+    color: "#c4b5a0",
+    colorBorder: false,
+  },
+  {
+    id: "tees-6",
+    image: "/w3.webp",
+    alt: "Boxy fit tee",
+    title: "BOXY FIT TEE",
+    fit: "BOXY FIT | WOMEN",
+    price: "PKR 2,290",
+    color: "#1a1a1a",
+    colorBorder: false,
+  },
+  {
+    id: "tees-7",
+    image: "/t1.webp",
+    alt: "Embroidered polo tee",
+    title: "EMBROIDERED POLO TEE",
+    fit: "REGULAR FIT | WOMEN",
+    price: "PKR 2,690",
+    color: "#f5f1eb",
+    colorBorder: true,
+  },
+  {
+    id: "tees-8",
+    image: "/t2.webp",
+    alt: "Classic polo tee",
+    title: "CLASSIC POLO TEE",
+    fit: "SLIM FIT | WOMEN",
+    price: "PKR 2,790",
+    color: "#6b5c4f",
+    colorBorder: false,
+  },
+];
+
+/** DRESSES — 8 products */
+export const WOMEN_FOCUS_DRESSES = [
+  {
+    id: "dress-1",
+    image: "/d1.webp",
+    alt: "Linen midi dress",
     title: "LINEN MIDI DRESS",
     fit: "RELAXED FIT | WOMEN",
     price: "PKR 4,990",
@@ -60,10 +111,9 @@ export const WOMEN_FOCUS_PRODUCTS = [
     colorBorder: false,
   },
   {
-    id: "focus-5",
-    category: "dresses",
-    image: "/d3.webp", // product5
-    alt: "Slip dress",
+    id: "dress-2",
+    image: "/d2.webp",
+    alt: "Satin slip dress",
     title: "SATIN SLIP DRESS",
     fit: "REGULAR FIT | WOMEN",
     price: "PKR 5,490",
@@ -71,9 +121,72 @@ export const WOMEN_FOCUS_PRODUCTS = [
     colorBorder: false,
   },
   {
-    id: "focus-6",
-    category: "trousers",
-    image: "/tr1.webp", // product6
+    id: "dress-3",
+    image: "/d3.webp",
+    alt: "Column maxi dress",
+    title: "COLUMN MAXI DRESS",
+    fit: "RELAXED FIT | WOMEN",
+    price: "PKR 5,990",
+    color: "#f5f1eb",
+    colorBorder: true,
+  },
+  {
+    id: "dress-4",
+    image: "/d4.webp",
+    alt: "Shirt dress",
+    title: "COTTON SHIRT DRESS",
+    fit: "REGULAR FIT | WOMEN",
+    price: "PKR 4,790",
+    color: "#e8e4dc",
+    colorBorder: true,
+  },
+  {
+    id: "dress-5",
+    image: "/d5.webp",
+    alt: "Wrap dress",
+    title: "WRAP MIDI DRESS",
+    fit: "RELAXED FIT | WOMEN",
+    price: "PKR 5,290",
+    color: "#6b5c4f",
+    colorBorder: false,
+  },
+  {
+    id: "dress-6",
+    image: "/w4.webp",
+    alt: "Day dress",
+    title: "DAY SHIFT DRESS",
+    fit: "REGULAR FIT | WOMEN",
+    price: "PKR 4,490",
+    color: "#1a1a1a",
+    colorBorder: false,
+  },
+  {
+    id: "dress-7",
+    image: "/w5.webp",
+    alt: "Evening dress",
+    title: "EVENING COLUMN DRESS",
+    fit: "SLIM FIT | WOMEN",
+    price: "PKR 6,490",
+    color: "#c4b5a0",
+    colorBorder: false,
+  },
+  {
+    id: "dress-8",
+    image: "/s1.webp",
+    alt: "Structured dress",
+    title: "STRUCTURED MINI DRESS",
+    fit: "REGULAR FIT | WOMEN",
+    price: "PKR 4,290",
+    color: "#f5f1eb",
+    colorBorder: true,
+  },
+];
+
+/** TROUSERS — 8 products */
+export const WOMEN_FOCUS_TROUSERS = [
+  {
+    id: "trouser-1",
+    image: "/tr1.webp",
     alt: "Wide-leg trousers",
     title: "WIDE-LEG TROUSERS",
     fit: "RELAXED FIT | WOMEN",
@@ -82,8 +195,7 @@ export const WOMEN_FOCUS_PRODUCTS = [
     colorBorder: true,
   },
   {
-    id: "focus-7",
-    category: "trousers",
+    id: "trouser-2",
     image: "/tr2.webp",
     alt: "Tailored trousers",
     title: "TAILORED TROUSERS",
@@ -92,4 +204,70 @@ export const WOMEN_FOCUS_PRODUCTS = [
     color: "#6b5c4f",
     colorBorder: false,
   },
+  {
+    id: "trouser-3",
+    image: "/tr3.webp",
+    alt: "Pleated trousers",
+    title: "PLEATED TROUSERS",
+    fit: "RELAXED FIT | WOMEN",
+    price: "PKR 3,490",
+    color: "#1a1a1a",
+    colorBorder: false,
+  },
+  {
+    id: "trouser-4",
+    image: "/tr4.webp",
+    alt: "Straight-leg trousers",
+    title: "STRAIGHT-LEG TROUSERS",
+    fit: "REGULAR FIT | WOMEN",
+    price: "PKR 3,590",
+    color: "#c4b5a0",
+    colorBorder: false,
+  },
+  {
+    id: "trouser-5",
+    image: "/tr5.webp",
+    alt: "Drawstring trousers",
+    title: "DRAWSTRING TROUSERS",
+    fit: "RELAXED FIT | WOMEN",
+    price: "PKR 3,190",
+    color: "#f5f1eb",
+    colorBorder: true,
+  },
+  {
+    id: "trouser-6",
+    image: "/trousers.webp",
+    alt: "Classic trousers",
+    title: "CLASSIC TROUSERS",
+    fit: "REGULAR FIT | WOMEN",
+    price: "PKR 3,890",
+    color: "#e8e4dc",
+    colorBorder: true,
+  },
+  {
+    id: "trouser-7",
+    image: "/w3.webp",
+    alt: "Linen trousers",
+    title: "LINEN TROUSERS",
+    fit: "RELAXED FIT | WOMEN",
+    price: "PKR 3,690",
+    color: "#6b5c4f",
+    colorBorder: false,
+  },
+  {
+    id: "trouser-8",
+    image: "/denim.webp",
+    alt: "Denim trousers",
+    title: "DENIM STRAIGHT TROUSERS",
+    fit: "REGULAR FIT | WOMEN",
+    price: "PKR 3,990",
+    color: "#2c3e50",
+    colorBorder: false,
+  },
 ];
+
+export const WOMEN_FOCUS_PRODUCTS_BY_CATEGORY = {
+  "tees-polos": WOMEN_FOCUS_TEES_POLOS,
+  dresses: WOMEN_FOCUS_DRESSES,
+  trousers: WOMEN_FOCUS_TROUSERS,
+};

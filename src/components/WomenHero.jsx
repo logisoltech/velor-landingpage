@@ -8,6 +8,7 @@ export default function WomenHero() {
       title={WOMEN_HERO_CONTENT.title}
       textLines={WOMEN_HERO_CONTENT.textLines}
       slideshowLabel={WOMEN_HERO_CONTENT.slideshowLabel}
+      fixed={false}
     />
   );
 }

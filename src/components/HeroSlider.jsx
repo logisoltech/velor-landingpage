@@ -3,7 +3,13 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export default function HeroSlider({ slides, title, textLines, slideshowLabel }) {
+export default function HeroSlider({
+  slides,
+  title,
+  textLines,
+  slideshowLabel,
+  fixed = true,
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [imageCycle, setImageCycle] = useState(0);
   const videoRefs = useRef({});
@@ -40,6 +46,8 @@ export default function HeroSlider({ slides, title, textLines, slideshowLabel })
   }, [activeIndex, slides]);
 
   useEffect(() => {
+    if (!fixed) return undefined;
+
     const mobileQuery = window.matchMedia("(max-width: 767px)");
 
     const syncHeroVisibility = () => {
@@ -63,10 +71,10 @@ export default function HeroSlider({ slides, title, textLines, slideshowLabel })
       mobileQuery.removeEventListener("change", syncHeroVisibility);
       document.documentElement.classList.remove("hero-past-viewport");
     };
-  }, []);
+  }, [fixed]);
 
   return (
-    <section className="hero">
+    <section className={`hero ${fixed ? "" : "hero--in-flow"}`.trim()}>
       <div className="hero__media-stack">
         {slides.map((slide, index) => {
           const isActive = index === activeIndex;

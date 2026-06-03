@@ -1,27 +1,27 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   WOMEN_FOCUS_CATEGORIES,
   WOMEN_FOCUS_FEATURED,
-  WOMEN_FOCUS_PRODUCTS,
+  WOMEN_FOCUS_PRODUCTS_BY_CATEGORY,
 } from "@/data/womenCategoriesFocus";
 
-export default function WomenCategoriesFocus() {
+export default function CategoriesInFocus() {
   const [activeCategory, setActiveCategory] = useState(
     WOMEN_FOCUS_CATEGORIES[0].id
   );
   const carouselRef = useRef(null);
   const dragRef = useRef({ active: false, startX: 0, scrollLeft: 0 });
 
-  const filteredProducts = useMemo(
-    () =>
-      WOMEN_FOCUS_PRODUCTS.filter(
-        (product) => product.category === activeCategory
-      ),
-    [activeCategory]
-  );
+  const products = WOMEN_FOCUS_PRODUCTS_BY_CATEGORY[activeCategory] ?? [];
+
+  const handleCategoryChange = (categoryId) => {
+    if (categoryId === activeCategory) return;
+    carouselRef.current?.scrollTo({ left: 0, behavior: "auto" });
+    setActiveCategory(categoryId);
+  };
 
   const bindWheelScroll = useCallback(() => {
     const el = carouselRef.current;
@@ -38,13 +38,8 @@ export default function WomenCategoriesFocus() {
   }, []);
 
   useEffect(() => {
-    const cleanup = bindWheelScroll();
-    return cleanup;
+    return bindWheelScroll();
   }, [bindWheelScroll, activeCategory]);
-
-  useEffect(() => {
-    carouselRef.current?.scrollTo({ left: 0, behavior: "smooth" });
-  }, [activeCategory]);
 
   const onPointerDown = (event) => {
     const el = carouselRef.current;
@@ -61,6 +56,7 @@ export default function WomenCategoriesFocus() {
 
   const onPointerMove = (event) => {
     if (!dragRef.current.active || !carouselRef.current) return;
+    event.preventDefault();
     const delta = event.clientX - dragRef.current.startX;
     carouselRef.current.scrollLeft = dragRef.current.scrollLeft - delta;
   };
@@ -105,7 +101,7 @@ export default function WomenCategoriesFocus() {
                         ? "women-focus__nav-item--active"
                         : ""
                     }`}
-                    onClick={() => setActiveCategory(category.id)}
+                    onClick={() => handleCategoryChange(category.id)}
                     aria-selected={activeCategory === category.id}
                   >
                     {category.label}
@@ -115,50 +111,60 @@ export default function WomenCategoriesFocus() {
             </ul>
           </nav>
 
-          <div
-            ref={carouselRef}
-            className="women-focus__carousel"
-            role="region"
-            aria-label={`${WOMEN_FOCUS_CATEGORIES.find((c) => c.id === activeCategory)?.label} products`}
-            onPointerDown={onPointerDown}
-            onPointerMove={onPointerMove}
-            onPointerUp={endDrag}
-            onPointerCancel={endDrag}
-            onPointerLeave={endDrag}
-          >
-            <ul className="women-focus__products">
-              {filteredProducts.map((product) => (
-                <li key={product.id} className="women-focus__product">
-                  <Link href={`#${product.id}`} className="women-focus__product-link">
-                    <div className="women-focus__product-media">
-                      <img
-                        src={product.image}
-                        alt={product.alt}
-                        className="women-focus__product-image"
-                        loading="lazy"
-                        decoding="async"
-                        draggable={false}
-                      />
-                    </div>
+          <div className="women-focus__carousel-wrap">
+            <div
+              key={activeCategory}
+              ref={carouselRef}
+              className="women-focus__carousel"
+              role="region"
+              aria-label={`${WOMEN_FOCUS_CATEGORIES.find((c) => c.id === activeCategory)?.label} products`}
+              onPointerDown={onPointerDown}
+              onPointerMove={onPointerMove}
+              onPointerUp={endDrag}
+              onPointerCancel={endDrag}
+            >
+              <ul className="women-focus__products">
+                {products.map((product) => (
+                  <li key={product.id} className="women-focus__product">
+                    <Link
+                      href={`#${product.id}`}
+                      className="women-focus__product-link"
+                      draggable={false}
+                    >
+                      <div className="women-focus__product-media">
+                        <img
+                          src={product.image}
+                          alt={product.alt}
+                          className="women-focus__product-image"
+                          loading="lazy"
+                          decoding="async"
+                          draggable={false}
+                        />
+                      </div>
 
-                    <div className="women-focus__product-info">
-                      <h3 className="women-focus__product-title">
-                        {product.title}
-                      </h3>
-                      <p className="women-focus__product-meta">{product.fit}</p>
-                      <p className="women-focus__product-price">{product.price}</p>
-                      <span
-                        className={`women-focus__swatch ${
-                          product.colorBorder ? "women-focus__swatch--bordered" : ""
-                        }`}
-                        style={{ backgroundColor: product.color }}
-                        aria-hidden="true"
-                      />
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                      <div className="women-focus__product-info">
+                        <h3 className="women-focus__product-title">
+                          {product.title}
+                        </h3>
+                        <p className="women-focus__product-meta">{product.fit}</p>
+                        <p className="women-focus__product-price">
+                          {product.price}
+                        </p>
+                        <span
+                          className={`women-focus__swatch ${
+                            product.colorBorder
+                              ? "women-focus__swatch--bordered"
+                              : ""
+                          }`}
+                          style={{ backgroundColor: product.color }}
+                          aria-hidden="true"
+                        />
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
