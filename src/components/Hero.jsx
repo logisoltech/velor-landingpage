@@ -47,6 +47,32 @@ export default function Hero() {
     });
   }, [activeIndex]);
 
+  useEffect(() => {
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+
+    const syncHeroVisibility = () => {
+      if (!mobileQuery.matches) {
+        document.documentElement.classList.remove("hero-past-viewport");
+        return;
+      }
+
+      const pastHero = window.scrollY > window.innerHeight * 0.92;
+      document.documentElement.classList.toggle("hero-past-viewport", pastHero);
+    };
+
+    syncHeroVisibility();
+    window.addEventListener("scroll", syncHeroVisibility, { passive: true });
+    window.addEventListener("resize", syncHeroVisibility);
+    mobileQuery.addEventListener("change", syncHeroVisibility);
+
+    return () => {
+      window.removeEventListener("scroll", syncHeroVisibility);
+      window.removeEventListener("resize", syncHeroVisibility);
+      mobileQuery.removeEventListener("change", syncHeroVisibility);
+      document.documentElement.classList.remove("hero-past-viewport");
+    };
+  }, []);
+
   return (
     <section className="hero">
       <div className="hero__media-stack">

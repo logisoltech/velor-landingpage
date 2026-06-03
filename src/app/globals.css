@@ -254,6 +254,26 @@ a {
   }
 }
 
+@media (max-width: 767px) {
+  body {
+    overscroll-behavior-y: none;
+  }
+
+  html.hero-past-viewport .hero {
+    display: none;
+  }
+
+  .page-content-stack {
+    background-color: var(--color-ivory);
+  }
+
+  .footer {
+    position: relative;
+    z-index: 2;
+    background-color: var(--color-ivory);
+  }
+}
+
 /* ─── Mission ─── */
 
 .mission {
@@ -1804,6 +1824,24 @@ a {
     max-width: 18rem;
     margin: 0 auto;
     gap: 2rem;
+  }
+
+  .summer-pause__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .summer-pause__product-title,
+  .summer-pause__product-meta,
+  .summer-pause__product-price {
+    width: 100%;
+    text-align: center;
+  }
+
+  .summer-pause__coming-soon {
+    text-align: center;
   }
 
   .summer-pause__editorial-header {
