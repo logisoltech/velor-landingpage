@@ -3,7 +3,11 @@ import { WOMEN_DENIM_FEATURE } from "@/data/womenDenimFeature";
 
 export default function DenimFeature() {
   return (
-    <section className="denim-feature" aria-labelledby="denim-feature-heading">
+    <section
+      id="women-denim-feature"
+      className="denim-feature"
+      aria-labelledby="denim-feature-heading"
+    >
       <div className="denim-feature__container">
         <header className="denim-feature__header">
           <h2 id="denim-feature-heading" className="denim-feature__title">

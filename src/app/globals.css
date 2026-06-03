@@ -71,6 +71,11 @@ a {
 
 .women-page .page-content-stack {
   margin-top: 0;
+  overflow-x: visible;
+}
+
+.women-page {
+  overflow-x: clip;
 }
 
 /* ─── Hero ─── */
@@ -1370,6 +1375,41 @@ a {
   }
 }
 
+.women-must-haves {
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.must-haves__products--scroll {
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  cursor: grab;
+}
+
+.must-haves__products--scroll:active {
+  cursor: grabbing;
+}
+
+.must-haves__tab {
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.must-haves__tab:focus {
+  outline: none;
+}
+
+.must-haves__tab:focus-visible {
+  outline: 1px solid rgba(26, 26, 26, 0.35);
+  outline-offset: 3px;
+}
+
+@media (min-width: 1024px) {
+  .women-must-haves .must-haves__product {
+    flex: 0 0 calc((100% - 6px) / 4.25);
+  }
+}
+
 /* ─── Editorial Nav ─── */
 
 @keyframes editorial-nav-marquee {
@@ -2342,14 +2382,18 @@ a {
   }
 }
 
-/* ─── Women — Category Blocks (Section 1) ─── */
+/* ─── Women — Category Tiles (below hero) ─── */
 
+.category-tiles,
 .women-blocks {
+  position: relative;
+  z-index: 2;
   background-color: var(--color-ivory);
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: clamp(0.125rem, 0.5vw, 0.25rem);
+  padding-bottom: clamp(0.125rem, 0.5vw, 0.25rem);
 }
 
+.category-tiles__grid,
 .women-blocks__grid {
   display: flex;
   gap: 2px;
@@ -2359,10 +2403,12 @@ a {
   scrollbar-width: none;
 }
 
+.category-tiles__grid::-webkit-scrollbar,
 .women-blocks__grid::-webkit-scrollbar {
   display: none;
 }
 
+.category-tiles__card,
 .women-blocks__card {
   position: relative;
   flex: 0 0 58vw;
@@ -2373,12 +2419,14 @@ a {
   scroll-snap-align: start;
 }
 
+.category-tiles__media,
 .women-blocks__media {
   position: absolute;
   inset: 0;
   overflow: hidden;
 }
 
+.category-tiles__image,
 .women-blocks__image {
   width: 100%;
   height: 100%;
@@ -2387,6 +2435,7 @@ a {
   transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.category-tiles__overlay,
 .women-blocks__overlay {
   position: absolute;
   inset: 0;
@@ -2394,6 +2443,7 @@ a {
   transition: background-color 500ms ease;
 }
 
+.category-tiles__title,
 .women-blocks__title {
   position: absolute;
   left: 50%;
@@ -2414,20 +2464,24 @@ a {
   pointer-events: none;
 }
 
+.category-tiles__card:hover .category-tiles__image,
 .women-blocks__card:hover .women-blocks__image {
   transform: scale(1.025);
 }
 
+.category-tiles__card:hover .category-tiles__overlay,
 .women-blocks__card:hover .women-blocks__overlay {
   background-color: rgba(0, 0, 0, 0.22);
 }
 
 @media (min-width: 768px) {
+  .category-tiles,
   .women-blocks {
     padding-top: 2px;
     padding-bottom: 2px;
   }
 
+  .category-tiles__grid,
   .women-blocks__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2437,6 +2491,7 @@ a {
     padding-right: 0.75rem;
   }
 
+  .category-tiles__card,
   .women-blocks__card {
     flex: unset;
     max-width: none;
@@ -2445,6 +2500,7 @@ a {
     aspect-ratio: 3 / 5.6;
   }
 
+  .category-tiles__title,
   .women-blocks__title {
     font-size: 1.25rem;
     letter-spacing: 0.16em;
@@ -2452,6 +2508,7 @@ a {
 }
 
 @media (min-width: 1024px) {
+  .category-tiles__grid,
   .women-blocks__grid {
     grid-template-columns: repeat(6, 1fr);
     gap: 2px;
@@ -2459,10 +2516,12 @@ a {
     padding-right: 0.625rem;
   }
 
+  .category-tiles__card,
   .women-blocks__card {
     aspect-ratio: 3 / 5.75;
   }
 
+  .category-tiles__title,
   .women-blocks__title {
     font-size: 1.3125rem;
     letter-spacing: 0.14em;
@@ -2470,15 +2529,18 @@ a {
 }
 
 @media (min-width: 1280px) {
+  .category-tiles__grid,
   .women-blocks__grid {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
 
+  .category-tiles__card,
   .women-blocks__card {
     aspect-ratio: 3 / 5.85;
   }
 
+  .category-tiles__title,
   .women-blocks__title {
     font-size: 1.375rem;
   }
@@ -2810,12 +2872,15 @@ a {
   }
 }
 
-/* ─── Women — Denim Feature ─── */
+/* ─── Women — Denim Feature (Outfitters reference proportions) ─── */
 
 .denim-feature {
+  position: relative;
+  z-index: 2;
   background-color: var(--color-ivory);
-  margin-top: clamp(3rem, 6vw, 5.5rem);
-  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: clamp(2rem, 4vw, 3.25rem);
+  padding-bottom: clamp(1.75rem, 3.5vw, 2.75rem);
 }
 
 .denim-feature__container {
@@ -2823,12 +2888,12 @@ a {
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: clamp(1rem, 3vw, 2.5rem);
-  padding-right: clamp(1rem, 3vw, 2.5rem);
+  padding-left: clamp(1.25rem, 2.5vw, 2.5rem);
+  padding-right: clamp(1.25rem, 2.5vw, 2.5rem);
 }
 
 .denim-feature__header {
-  max-width: 52rem;
+  max-width: 100%;
 }
 
 .denim-feature__title {
@@ -2842,8 +2907,8 @@ a {
 }
 
 .denim-feature__copy {
-  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
-  max-width: 46rem;
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  max-width: 100%;
   font-family: var(--font-sans);
   font-size: clamp(0.625rem, 1vw, 0.75rem);
   font-weight: 400;
@@ -2857,7 +2922,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  margin-top: clamp(1.5rem, 3vw, 2rem);
+  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
   font-family: var(--font-sans);
   font-size: 11px;
   font-weight: 500;
@@ -2880,11 +2945,9 @@ a {
 }
 
 .denim-feature__banner-wrap {
-  width: 100vw;
-  max-width: 100%;
-  margin-top: clamp(2rem, 4vw, 3rem);
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+  aspect-ratio: 3.15 / 1;
   overflow: hidden;
   background-color: #ebe6de;
 }
@@ -2892,32 +2955,49 @@ a {
 .denim-feature__banner-image {
   display: block;
   width: 100%;
-  height: auto;
-  min-height: clamp(12rem, 28vw, 22rem);
-  max-height: clamp(16rem, 38vw, 28rem);
+  height: 100%;
   object-fit: cover;
   object-position: center center;
 }
 
 @media (min-width: 768px) {
-  .denim-feature__banner-image {
-    min-height: clamp(14rem, 24vw, 20rem);
-    max-height: clamp(18rem, 32vw, 26rem);
+  .denim-feature__header {
+    max-width: 42%;
+  }
+
+  .denim-feature__copy {
+    max-width: 100%;
+  }
+
+  .denim-feature__banner-wrap {
+    aspect-ratio: 3.2 / 1;
   }
 }
 
-/* ─── Women — Editorial Split Banners ─── */
+@media (min-width: 1024px) {
+  .denim-feature__header {
+    max-width: 40%;
+  }
+
+  .denim-feature__banner-wrap {
+    aspect-ratio: 3.25 / 1;
+  }
+}
+
+/* ─── Women — Editorial Split Banners (Outfitters reference proportions) ─── */
 
 .editorial-banners {
+  position: relative;
+  z-index: 2;
   background-color: var(--color-ivory);
-  padding-top: clamp(2px, 0.5vw, 2px);
+  padding-top: clamp(1.5rem, 3vw, 2.25rem);
   padding-bottom: clamp(3rem, 6vw, 5rem);
 }
 
 .editorial-banners__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2px;
+  gap: 0;
   width: 100%;
 }
 
@@ -2985,6 +3065,6 @@ a {
   }
 
   .editorial-banners__card {
-    aspect-ratio: 5 / 6;
+    aspect-ratio: 4 / 5;
   }
 }

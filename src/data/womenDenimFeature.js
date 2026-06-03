@@ -3,7 +3,7 @@
  * Replace bannerImage and copy below.
  */
 
-export const WOMEN_DENIM_BANNER = "/banner12.webp"; // denimBanner
+export const WOMEN_DENIM_BANNER = "/banner60.png"; // denimBanner — use a wide ~3:1 image for best match
 
 export const WOMEN_DENIM_FEATURE = {
   title: "DENIM",

@@ -5,7 +5,11 @@ export default function EditorialBanners() {
   const { left, right } = WOMEN_EDITORIAL_BANNERS;
 
   return (
-    <section className="editorial-banners" aria-label="Editorial collections">
+    <section
+      id="women-editorial-banners"
+      className="editorial-banners"
+      aria-label="Editorial collections"
+    >
       <div className="editorial-banners__grid">
         <Link href={left.href} className="editorial-banners__card">
           <div className="editorial-banners__media">
