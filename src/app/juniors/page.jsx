@@ -1,19 +1,19 @@
 import SectionPage from "@/components/SectionPage";
 
 export const metadata = {
-  title: "Collections | VELOR",
-  description: "Explore VELOR seasonal collections.",
+  title: "Juniors | VELOR",
+  description: "Explore VELOR juniors.",
 };
 
-export default function CollectionsPage() {
+export default function JuniorsPage() {
   return (
     <SectionPage
       label="Seasonal"
-      title="Collections"
+      title="Juniors"
       subtitle="Seasonal edits and considered capsules shaped by fabric, form, and modern restraint."
     >
       <p className="section-page__intro">
-        Browse our latest collections — cohesive stories in linen, cotton, and
+        Browse our latest juniors — cohesive stories in linen, cotton, and
         lightweight textures designed to layer effortlessly.
       </p>
     </SectionPage>

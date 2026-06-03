@@ -7,7 +7,7 @@ import Link from "next/link";
 const LEFT_LINKS = [
   { label: "WOMEN", href: "/women" },
   { label: "MEN", href: "/men" },
-  { label: "COLLECTIONS", href: "/collections" },
+  { label: "JUNIORS", href: "/juniors" },
   { label: "JOURNAL", href: "/journal" },
 ];
 
