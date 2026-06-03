@@ -84,11 +84,6 @@ a {
   z-index: 0;
 }
 
-.juniors-page .page-content-stack {
-  margin-top: 0;
-  overflow-x: visible;
-}
-
 /* ─── Hero ─── */
 
 @keyframes hero-fade-in {
