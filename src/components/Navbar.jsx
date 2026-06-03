@@ -5,10 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const LEFT_LINKS = [
-  { label: "WOMEN", href: "#women" },
-  { label: "MEN", href: "#men" },
-  { label: "COLLECTIONS", href: "#collections" },
-  { label: "JOURNAL", href: "#journal" },
+  { label: "WOMEN", href: "/women" },
+  { label: "MEN", href: "/men" },
+  { label: "COLLECTIONS", href: "/collections" },
+  { label: "JOURNAL", href: "/journal" },
 ];
 
 const RIGHT_LINKS = [
