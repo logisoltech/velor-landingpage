@@ -2331,3 +2331,438 @@ a {
     letter-spacing: 0.04em;
   }
 }
+
+/* ─── Women — Category Blocks (Section 1) ─── */
+
+.women-blocks {
+  background-color: var(--color-ivory);
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.women-blocks__grid {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.women-blocks__grid::-webkit-scrollbar {
+  display: none;
+}
+
+.women-blocks__card {
+  position: relative;
+  flex: 0 0 58vw;
+  max-width: 240px;
+  height: 420px;
+  overflow: hidden;
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+
+.women-blocks__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.women-blocks__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.women-blocks__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.14);
+  transition: background-color 500ms ease;
+}
+
+.women-blocks__title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: 100%;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1.2;
+  pointer-events: none;
+}
+
+.women-blocks__card:hover .women-blocks__image {
+  transform: scale(1.025);
+}
+
+.women-blocks__card:hover .women-blocks__overlay {
+  background-color: rgba(0, 0, 0, 0.22);
+}
+
+@media (min-width: 768px) {
+  .women-blocks {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  .women-blocks__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    overflow-x: visible;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .women-blocks__card {
+    flex: unset;
+    max-width: none;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 5.6;
+  }
+
+  .women-blocks__title {
+    font-size: 1.25rem;
+    letter-spacing: 0.16em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .women-blocks__grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2px;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+  }
+
+  .women-blocks__card {
+    aspect-ratio: 3 / 5.75;
+  }
+
+  .women-blocks__title {
+    font-size: 1.3125rem;
+    letter-spacing: 0.14em;
+  }
+}
+
+@media (min-width: 1280px) {
+  .women-blocks__grid {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .women-blocks__card {
+    aspect-ratio: 3 / 5.85;
+  }
+
+  .women-blocks__title {
+    font-size: 1.375rem;
+  }
+}
+
+/* ─── Women — Categories in Focus (Section 2) ─── */
+
+.women-focus {
+  background-color: var(--color-ivory);
+  padding-top: 2.5rem;
+  padding-bottom: 3.5rem;
+}
+
+.women-focus__layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.women-focus__featured {
+  width: 100%;
+  aspect-ratio: 3 / 4.2;
+  overflow: hidden;
+  background-color: #ebe6de;
+}
+
+.women-focus__featured-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.women-focus__panel {
+  padding: 2rem 1rem 0;
+}
+
+.women-focus__heading {
+  font-family: var(--font-sans);
+  font-size: 1.375rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+  line-height: 1.15;
+}
+
+.women-focus__nav {
+  margin-top: 1.5rem;
+}
+
+.women-focus__nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.women-focus__nav-item {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.45);
+  text-align: left;
+  transition: color 300ms ease;
+}
+
+.women-focus__nav-item:hover {
+  color: rgba(26, 26, 26, 0.72);
+}
+
+.women-focus__nav-item--active {
+  color: var(--color-charcoal);
+  font-weight: 500;
+}
+
+.women-focus__carousel {
+  margin-top: 2rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.women-focus__carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.women-focus__carousel--dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  user-select: none;
+}
+
+.women-focus__products {
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  list-style: none;
+}
+
+.women-focus__product {
+  flex: 0 0 72vw;
+  max-width: 280px;
+  scroll-snap-align: start;
+}
+
+.women-focus__product-link {
+  display: block;
+}
+
+.women-focus__product-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4.2;
+  overflow: hidden;
+  background-color: #ebe6de;
+}
+
+.women-focus__product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.women-focus__product-info {
+  padding-top: 0.875rem;
+  padding-right: 0.25rem;
+}
+
+.women-focus__product-title {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+  line-height: 1.35;
+}
+
+.women-focus__product-meta {
+  margin-top: 0.375rem;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.55);
+  line-height: 1.4;
+}
+
+.women-focus__product-price {
+  margin-top: 0.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+}
+
+.women-focus__swatch {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-top: 0.625rem;
+}
+
+.women-focus__swatch--bordered {
+  box-shadow: inset 0 0 0 1px rgba(26, 26, 26, 0.22);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .women-focus__product-link:hover .women-focus__product-image {
+    transform: scale(1.02);
+  }
+}
+
+@media (min-width: 768px) {
+  .women-focus {
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+  }
+
+  .women-focus__layout {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 2px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .women-focus__featured {
+    flex: 0 0 34%;
+    max-width: 34%;
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+
+  .women-focus__panel {
+    flex: 1;
+    min-width: 0;
+    padding: 2.5rem 1.5rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .women-focus__heading {
+    font-size: 1.5rem;
+    letter-spacing: 0.07em;
+  }
+
+  .women-focus__nav {
+    margin-top: 2rem;
+  }
+
+  .women-focus__nav-list {
+    gap: 1rem;
+  }
+
+  .women-focus__nav-item {
+    font-size: 0.875rem;
+    letter-spacing: 0.12em;
+  }
+
+  .women-focus__carousel {
+    margin-top: auto;
+    padding-top: 2.5rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .women-focus__products {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .women-focus__product {
+    flex: 0 0 220px;
+    max-width: 220px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .women-focus__layout {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+  }
+
+  .women-focus__featured {
+    flex-basis: 32%;
+    max-width: 32%;
+  }
+
+  .women-focus__panel {
+    padding-left: 2.5rem;
+    padding-right: 1rem;
+  }
+
+  .women-focus__heading {
+    font-size: 1.625rem;
+  }
+
+  .women-focus__product {
+    flex: 0 0 240px;
+    max-width: 240px;
+  }
+
+  .women-focus__product-title {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .women-focus__featured {
+    flex-basis: 30%;
+    max-width: 30%;
+  }
+
+  .women-focus__product {
+    flex: 0 0 260px;
+    max-width: 260px;
+  }
+}

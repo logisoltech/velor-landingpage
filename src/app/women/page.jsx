@@ -1,4 +1,6 @@
-import Hero from "@/components/Hero";
+import WomenHero from "@/components/WomenHero";
+import WomenCategoryBlocks from "@/components/WomenCategoryBlocks";
+import WomenCategoriesFocus from "@/components/WomenCategoriesFocus";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
@@ -10,16 +12,18 @@ export const metadata = {
 export default function WomenPage() {
   return (
     <main className="page-main">
-      <Hero />
+      <WomenHero />
       <div className="page-content-stack">
-        <div className="section-page__body">
-          <div className="section-page__container">
+        <WomenCategoryBlocks />
+        <WomenCategoriesFocus />
+        {/* <div className="section-page__body">
+           <div className="section-page__container">
             <p className="section-page__intro">
               Explore curated womenswear crafted from premium materials — from
               everyday staples to statement pieces for the season ahead.
             </p>
           </div>
-        </div>
+        </div> */}
         <Footer />
       </div>
       <Navbar overlay />

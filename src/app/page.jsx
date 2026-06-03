@@ -1,4 +1,4 @@
-import Hero from "@/components/Hero";
+import HomeHero from "@/components/HomeHero";
 import Mission from "@/components/Mission";
 import CategoryShowcase from "@/components/CategoryShowcase";
 import MustHaves from "@/components/MustHaves";
@@ -10,7 +10,7 @@ import Navbar from "@/components/Navbar";
 export default function Home() {
   return (
     <main className="page-main">
-      <Hero />
+      <HomeHero />
       <div className="page-content-stack">
         {/* <Mission /> */}
         <CategoryShowcase />

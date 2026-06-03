@@ -3,36 +3,28 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const SLIDES = [
-  { type: "video", src: "/H-2.mp4", duration: 5000 },
-  { type: "video", src: "/H-3.mp4", duration: 5000 },
-  { type: "image", src: "/H-1.jpg", duration: 3000, alt: "The May Edit — limited edition collection" },
-  { type: "video", src: "/H-4.mp4", duration: 4000 },
-  
-];
-
-export default function Hero() {
+export default function HeroSlider({ slides, title, textLines, slideshowLabel }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [imageCycle, setImageCycle] = useState(0);
   const videoRefs = useRef({});
 
   const goToNext = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % SLIDES.length);
-  }, []);
+    setActiveIndex((prev) => (prev + 1) % slides.length);
+  }, [slides.length]);
 
   useEffect(() => {
-    const timer = setTimeout(goToNext, SLIDES[activeIndex].duration);
+    const timer = setTimeout(goToNext, slides[activeIndex].duration);
     return () => clearTimeout(timer);
-  }, [activeIndex, goToNext]);
+  }, [activeIndex, goToNext, slides]);
 
   useEffect(() => {
-    if (SLIDES[activeIndex].type === "image") {
+    if (slides[activeIndex].type === "image") {
       setImageCycle((c) => c + 1);
     }
-  }, [activeIndex]);
-  
+  }, [activeIndex, slides]);
+
   useEffect(() => {
-    SLIDES.forEach((slide, index) => {
+    slides.forEach((slide, index) => {
       if (slide.type !== "video") return;
       const video = videoRefs.current[index];
       if (!video) return;
@@ -45,7 +37,7 @@ export default function Hero() {
         video.currentTime = 0;
       }
     });
-  }, [activeIndex]);
+  }, [activeIndex, slides]);
 
   useEffect(() => {
     const mobileQuery = window.matchMedia("(max-width: 767px)");
@@ -76,12 +68,12 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="hero__media-stack">
-        {SLIDES.map((slide, index) => {
+        {slides.map((slide, index) => {
           const isActive = index === activeIndex;
 
           return (
             <div
-              key={slide.src}
+              key={`${slide.src}-${index}`}
               className={`hero__slide ${isActive ? "hero__slide--active" : ""}`}
               aria-hidden={!isActive}
             >
@@ -121,23 +113,26 @@ export default function Hero() {
 
       <div className="hero__content">
         <div className="hero__content-inner">
-          <h1 className="hero__title">The May Edit</h1>
+          <h1 className="hero__title">{title}</h1>
 
           <p className="hero__text">
-            A limited edition dress, and linen for the table.
-            <br />
-            Available for two weeks only.
+            {textLines.map((line, index) => (
+              <span key={`${line}-${index}`}>
+                {index > 0 ? <br /> : null}
+                {line}
+              </span>
+            ))}
           </p>
         </div>
       </div>
 
-      <div className="hero__dots" role="tablist" aria-label="Hero slideshow">
-        {SLIDES.map((slide, index) => (
+      <div className="hero__dots" role="tablist" aria-label={slideshowLabel}>
+        {slides.map((slide, index) => (
           <span
-            key={slide.src}
+            key={`${slide.src}-dot-${index}`}
             role="tab"
             aria-selected={index === activeIndex}
-            aria-label={`Slide ${index + 1} of ${SLIDES.length}`}
+            aria-label={`Slide ${index + 1} of ${slides.length}`}
             className={`hero__dot ${
               index === activeIndex ? "hero__dot--active" : "hero__dot--inactive"
             }`}
