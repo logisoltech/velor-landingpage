@@ -74,8 +74,19 @@ a {
   overflow-x: visible;
 }
 
-.women-page {
+.women-page,
+.juniors-page {
   overflow-x: clip;
+}
+
+.juniors-page .hero--in-flow {
+  position: relative;
+  z-index: 0;
+}
+
+.juniors-page .page-content-stack {
+  margin-top: 0;
+  overflow-x: visible;
 }
 
 /* ─── Hero ─── */

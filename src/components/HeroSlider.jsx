@@ -73,6 +73,18 @@ export default function HeroSlider({
     };
   }, [fixed]);
 
+  const usePerSlideContent = slides.some(
+    (slide) => typeof slide.title === "string" && slide.title.length > 0
+  );
+  const activeSlide = slides[activeIndex];
+  const displayTitle = usePerSlideContent
+    ? (activeSlide.title ?? "")
+    : (title ?? "");
+  const displayTextLines = usePerSlideContent
+    ? activeSlide.textLines ??
+      (activeSlide.subtitle ? [activeSlide.subtitle].filter(Boolean) : [])
+    : (textLines ?? []);
+
   return (
     <section className={`hero ${fixed ? "" : "hero--in-flow"}`.trim()}>
       <div className="hero__media-stack">
@@ -121,10 +133,10 @@ export default function HeroSlider({
 
       <div className="hero__content">
         <div className="hero__content-inner">
-          <h1 className="hero__title">{title}</h1>
+          <h1 className="hero__title">{displayTitle}</h1>
 
           <p className="hero__text">
-            {textLines.map((line, index) => (
+            {displayTextLines.map((line, index) => (
               <span key={`${line}-${index}`}>
                 {index > 0 ? <br /> : null}
                 {line}
