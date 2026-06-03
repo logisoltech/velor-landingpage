@@ -10,6 +10,16 @@ export default function SummerPause() {
       <SummerPauseBanner />
 
       <div className="summer-pause__container">
+        <header className="summer-pause__collection-header">
+          <p className="summer-pause__collection-label">NEW ARRIVALS</p>
+          <h2 className="summer-pause__collection-title">Most Loved Pieces</h2>
+          <p className="summer-pause__collection-description">
+            Thoughtfully designed everyday styles that combine comfort,
+            versatility, and effortless appeal. Reliable go-to pieces made to
+            fit seamlessly into your daily wardrobe.
+          </p>
+        </header>
+
         <ul className="summer-pause__grid">
           {products.map((product) => (
             <li key={product.id} className="summer-pause__card">
