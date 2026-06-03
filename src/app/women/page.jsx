@@ -4,6 +4,7 @@ import CategoriesInFocus from "@/components/CategoriesInFocus";
 import DenimFeature from "@/components/DenimFeature";
 import EditorialBanners from "@/components/EditorialBanners";
 import WomenMustHaves from "@/components/WomenMustHaves";
+import LastChanceBanner from "@/components/LastChanceBanner";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
@@ -17,13 +18,12 @@ export default function WomenPage() {
     <main className="page-main women-page">
       <WomenHero />
       <CategoryTiles />
-      <div className="page-content-stack">
-        <CategoriesInFocus />
-        <DenimFeature />
-        <EditorialBanners />
-        <WomenMustHaves />
-        <Footer />
-      </div>
+      <CategoriesInFocus />
+      <DenimFeature />
+      <EditorialBanners />
+      <WomenMustHaves />
+      <LastChanceBanner />
+      <Footer />
       <Navbar overlay />
     </main>
   );
