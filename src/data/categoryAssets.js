@@ -69,7 +69,7 @@ export const SHOWCASE_CATEGORIES = [
   {
     title: "Polos",
     href: "#polos",
-    image: "/polos.jpg",
+    image: "/polo1.png",
     alt: "Male model wearing a knit polo shirt",
   },
   {
