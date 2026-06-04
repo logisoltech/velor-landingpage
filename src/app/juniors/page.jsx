@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 
 export const metadata = {
   title: "Juniors | VELOR",
-  description: "Explore VELOR juniors.",
+  description: " VELOR juniors.",
 };
 
 export default function JuniorsPage() {

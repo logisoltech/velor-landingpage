@@ -63,7 +63,7 @@ export const SHOWCASE_CATEGORIES = [
   {
     title: "T-Shirts",
     href: "#t-shirts",
-    image: "/tsh.webp" ,
+    image: "/chat1.png" ,
     alt: "Male model wearing a premium t-shirt",
   },
   {
