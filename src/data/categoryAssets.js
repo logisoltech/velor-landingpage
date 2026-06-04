@@ -75,25 +75,25 @@ export const SHOWCASE_CATEGORIES = [
   {
     title: "Shirts",
     href: "#shirts",
-    image: "/shirts.webp",
+    image: "/shirt3.png",
     alt: "Male model wearing a tailored shirt",
   },
   {
     title: "Activewear",
     href: "#activewear",
-    image: "/activewear.jpg",
+    image: "/active.png",
     alt: "Male model in premium activewear",
   },
   {
     title: "Denim",
     href: "#denim",
-    image: "/denim.webp",
+    image: "/denim1.png",
     alt: "Male model wearing denim jeans",
   },
   {
     title: "Trousers",
     href: "#trousers",
-    image: "/trousers.webp",
+    image: "/trouserr.png",
     alt: "Male model wearing tailored trousers",
   },
 ];
