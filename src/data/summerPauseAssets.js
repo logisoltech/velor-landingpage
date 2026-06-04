@@ -40,29 +40,23 @@ export const SUMMER_PAUSE_ASSETS = {
     copy:
       "THE TEMPERATURE IS RISING AND THE DAYS ARE SLOWING DOWN, SETTING THE TONE FOR COMFORTABLE SILHOUETTES AND RELAXED PIECES IN AIRY COTTONS AND LIGHTWEIGHT TEXTURES.",
   },
-  products: [
+  featured: {
+    id: "sp-featured",
+    image: "/w2.webp",
+    alt: "Comfortable button-up shirt",
+  },
+  gridProducts: [
     {
       id: "sp-tank",
       title: "Graphic T-Shirt",
-      meta: "Relaxed Fit | Women",
       price: "€79",
       image: "/w11.webp",
       alt: "Essential linen t-shirt",
       comingSoon: false,
     },
     {
-      id: "sp-trousers",
-      title: "Button Up Shirt",
-      meta: "Relaxed Fit",
-      price: "€89",
-      image: "/w2.webp",
-      alt: "Comfortable button-up shirt",
-      comingSoon: true,
-    },
-    {
       id: "sp-flats",
       title: "Textured Shirt",
-      meta: "Relaxed Fit",
       price: "€59",
       image: "/w3.webp",
       alt: "Textured shirt with interesting texture pattern",
@@ -71,7 +65,6 @@ export const SUMMER_PAUSE_ASSETS = {
     {
       id: "sp-tee",
       title: "Graphic T-Shirt (Juniors)",
-      meta: "Relaxed Fit | Juniors",
       price: "€39",
       image: "/w4.webp",
       alt: "Graphic t-shirt with interesting design for juniors",
@@ -80,19 +73,9 @@ export const SUMMER_PAUSE_ASSETS = {
     {
       id: "sp-shorts",
       title: "Embroidered Schiffli Blouse",
-      meta: "Relaxed Fit (Juniors)",
       price: "€39",
       image: "/w5.webp",
       alt: "Embroidered schiffli blouse",
-      comingSoon: false,
-    },
-    {
-      id: "sp-clogs",
-      title: "Suede Loafers",
-      meta: "Juniors",
-      price: "€69",
-      image: "/w6.webp",
-      alt: "Suede loafers",
       comingSoon: false,
     },
   ],

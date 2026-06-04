@@ -2,8 +2,61 @@ import Link from "next/link";
 import { SUMMER_PAUSE_ASSETS } from "@/data/summerPauseAssets";
 import SummerPauseBanner from "@/components/SummerPauseBanner";
 
+function FeaturedCard({ product }) {
+  return (
+    <article className="summer-pause__featured">
+      <Link
+        href={`#${product.id}`}
+        className="summer-pause__card-link summer-pause__card-link--featured"
+        aria-label={product.alt}
+      >
+        <div className="summer-pause__media summer-pause__media--featured">
+          <img
+            src={product.image}
+            alt={product.alt}
+            className="summer-pause__product-image"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </Link>
+    </article>
+  );
+}
+
+function GridCard({ product }) {
+  return (
+    <li className="summer-pause__card summer-pause__card--grid">
+      <Link href={`#${product.id}`} className="summer-pause__card-link">
+        <div className="summer-pause__media summer-pause__media--grid">
+          <img
+            src={product.image}
+            alt={product.alt}
+            className="summer-pause__product-image"
+            loading="lazy"
+            decoding="async"
+          />
+          {product.comingSoon ? (
+            <div className="summer-pause__coming-soon" aria-hidden="true">
+              COMING SOON
+            </div>
+          ) : null}
+          <span className="summer-pause__add-icon" aria-hidden="true">
+            +
+          </span>
+        </div>
+
+        <div className="summer-pause__info summer-pause__info--grid">
+          <h3 className="summer-pause__product-title">{product.title}</h3>
+          <p className="summer-pause__product-price">{product.price}</p>
+        </div>
+      </Link>
+    </li>
+  );
+}
+
 export default function SummerPause() {
-  const { products, editorial } = SUMMER_PAUSE_ASSETS;
+  const { featured, gridProducts, editorial } = SUMMER_PAUSE_ASSETS;
 
   return (
     <section className="summer-pause" aria-labelledby="summer-pause-heading">
@@ -20,64 +73,27 @@ export default function SummerPause() {
           </p>
         </header>
 
-        <ul className="summer-pause__grid">
-          {products.map((product) => (
-            <li key={product.id} className="summer-pause__card">
-              <Link href={`#${product.id}`} className="summer-pause__card-link">
-                <div className="summer-pause__media">
-                  <img
-                    src={product.image}
-                    alt={product.alt}
-                    className="summer-pause__product-image"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  {product.comingSoon ? (
-                    <div className="summer-pause__coming-soon" aria-hidden="true">
-                      COMING SOON
-                    </div>
-                  ) : null}
-                </div>
+        <div
+          className="summer-pause__showcase"
+          role="region"
+          aria-label="Most loved pieces"
+        >
+          <FeaturedCard product={featured} />
+          <ul className="summer-pause__mini-grid">
+            {gridProducts.map((product) => (
+              <GridCard key={product.id} product={product} />
+            ))}
+          </ul>
+        </div>
 
-                <div className="summer-pause__quick-add" aria-hidden="true">
-                  <span className="summer-pause__quick-add-text">
-                    Add to Basket
-                  </span>
-                  <span className="summer-pause__quick-add-icon">
-                    <svg
-                      className="summer-pause__bag-icon"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M6 7h12l-1.2 13.2H7.2L6 7z"
-                        stroke="currentColor"
-                        strokeWidth="1.25"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M9 7V5.5a3 3 0 016 0V7"
-                        stroke="currentColor"
-                        strokeWidth="1.25"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </span>
-                </div>
-
-                <div className="summer-pause__info">
-                  <h3 className="summer-pause__product-title">{product.title}</h3>
-                  <p className="summer-pause__product-meta">{product.meta}</p>
-                  <p className="summer-pause__product-price">{product.price}</p>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="summer-pause__collection-footer">
+          <Link href="#view-collection" className="summer-pause__view-collection">
+            View Collection
+            <span className="summer-pause__view-collection-arrow" aria-hidden="true">
+              →
+            </span>
+          </Link>
+        </div>
       </div>
 
       <div className="summer-pause__editorial">
