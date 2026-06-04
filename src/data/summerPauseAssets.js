@@ -1,19 +1,19 @@
 export const bannerSlides = [
   {
     image: "/banner62.png",
-    title: "SUMMER ESSENTIALS",
-    subtitle: "Lightweight pieces for everyday ease.",
+    title: "",
+    subtitle: "",
   },
   {
     image: "/banner63.webp",
-    title: "RELAXED SILHOUETTES",
-    subtitle: "Soft textures made for slow days.",
+    title: "",
+    subtitle: "",
   },
   {
     image:
       "/banner64.jpg",
-    title: "NEW SEASON LAYERS",
-    subtitle: "Modern comfort in timeless tones.",
+    title: "",
+    subtitle: "",
   },
 ];
 
