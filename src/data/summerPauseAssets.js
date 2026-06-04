@@ -1,17 +1,17 @@
 export const bannerSlides = [
   {
-    image: "/banner12.webp",
+    image: "/banner62.png",
     title: "SUMMER ESSENTIALS",
     subtitle: "Lightweight pieces for everyday ease.",
   },
   {
-    image: "/banner13.webp",
+    image: "/banner63.webp",
     title: "RELAXED SILHOUETTES",
     subtitle: "Soft textures made for slow days.",
   },
   {
     image:
-      "https://outfitters.com.pk/cdn/shop/files/6_9a0175d7-612f-480e-a502-e7a7405996f7_1600x.jpg?v=1778754799",
+      "/banner64.jpg",
     title: "NEW SEASON LAYERS",
     subtitle: "Modern comfort in timeless tones.",
   },
