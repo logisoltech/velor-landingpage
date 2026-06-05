@@ -65,6 +65,7 @@ export default function SummerPauseBanner() {
   };
 
   return (
+    
     <div className="summer-pause__banner">
       <div
         className={`summer-pause__banner-track ${

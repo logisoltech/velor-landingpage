@@ -1,49 +1,90 @@
-const CATEGORIES = [
-  { id: "t-shirts", label: "T-Shirts" },
-  { id: "pants", label: "Pants" },
-  { id: "sweatshirts", label: "Sweatshirts" },
-  { id: "shirts", label: "Shirts" },
-  { id: "jackets", label: "Jackets" },
-  { id: "blazers", label: "Blazers" },
-  { id: "polo-shirts", label: "Polo Shirts" },
-  { id: "bags", label: "Bags" },
-  { id: "accessories", label: "Accessories" },
-  { id: "shorts", label: "Shorts" },
-];
+"use client";
 
-function CategorySequence({ duplicate = false }) {
+import { useCallback, useState } from "react";
+import {
+  categoryById,
+  editorialCategoryLines,
+  interactiveCategories,
+} from "@/data/interactiveCategories";
+
+const defaultCategory = interactiveCategories[0];
+
+function CategoryWord({ id, suffix, activeId, onCategoryEnter }) {
+  const category = categoryById[id];
+  if (!category) return null;
+
+  const isActive = activeId === id;
+
   return (
-    <div
-      className="editorial-nav__sequence"
-      aria-hidden={duplicate || undefined}
-    >
-      {CATEGORIES.map((item, index) => (
-        <span key={`${item.id}-${duplicate ? "dup" : "orig"}`} className="editorial-nav__item">
-          {index > 0 ? (
-            <span className="editorial-nav__comma" aria-hidden="true">
-              &nbsp;|&nbsp;
-            </span>
-          ) : null}
-          <button type="button" className="editorial-nav__word" tabIndex={duplicate ? -1 : 0}>
-            {item.label}
-          </button>
+    <>
+      <button
+        type="button"
+        className={`editorial-nav__word ${
+          isActive ? "editorial-nav__word--active" : ""
+        }`}
+        onMouseEnter={() => onCategoryEnter(id)}
+        onFocus={() => onCategoryEnter(id)}
+      >
+        {category.label}
+      </button>
+      {suffix ? (
+        <span className="editorial-nav__suffix" aria-hidden="true">
+          {suffix}
         </span>
-      ))}
-      <span className="editorial-nav__separator" aria-hidden="true">
-        {" "}
-        •{" "}
-      </span>
-    </div>
+      ) : null}
+    </>
   );
 }
 
 export default function EditorialNav() {
+  const [activeId, setActiveId] = useState(null);
+
+  const displayCategory =
+    categoryById[activeId] ?? defaultCategory;
+
+  const handleCategoryEnter = useCallback((id) => {
+    setActiveId(id);
+  }, []);
+
+  const handleSectionLeave = useCallback(() => {
+    setActiveId(null);
+  }, []);
+
   return (
-    <section className="editorial-nav" aria-label="Shop by category">
-      <div className="editorial-nav__viewport">
-        <div className="editorial-nav__track">
-          <CategorySequence />
-          <CategorySequence duplicate />
+    <section
+      className="editorial-nav"
+      aria-label="Shop by category"
+      onMouseLeave={handleSectionLeave}
+    >
+      <div className="editorial-nav__inner">
+        <div className="editorial-nav__image-stage" aria-hidden="true">
+          <img
+            key={displayCategory.id}
+            src={displayCategory.image}
+            alt=""
+            className="editorial-nav__model-image"
+            decoding="async"
+          />
+        </div>
+
+        <div className="editorial-nav__cloud">
+          {editorialCategoryLines.map((line, lineIndex) => (
+            <p
+              key={`editorial-line-${lineIndex}`}
+              className="editorial-nav__line"
+            >
+              {line.map((item) => (
+                <span key={item.id} className="editorial-nav__phrase">
+                  <CategoryWord
+                    id={item.id}
+                    suffix={item.suffix}
+                    activeId={activeId}
+                    onCategoryEnter={handleCategoryEnter}
+                  />
+                </span>
+              ))}
+            </p>
+          ))}
         </div>
       </div>
     </section>
