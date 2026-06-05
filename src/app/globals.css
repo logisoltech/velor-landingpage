@@ -1435,7 +1435,10 @@ a {
   width: 100%;
   overflow: hidden;
   background-color: var(--color-ivory);
-  padding: clamp(5rem, 12vw, 9rem) clamp(1.25rem, 4vw, 3rem);
+  padding-top: clamp(2rem, 5vw, 4rem);
+  padding-bottom: clamp(5rem, 12vw, 9rem);
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
   min-height: clamp(34rem, 78vh, 52rem);
 }
 
@@ -1551,6 +1554,7 @@ a {
 }
 
 .must-haves + .editorial-nav {
+  padding-top: clamp(1rem, 2.5vw, 2rem);
   padding-bottom: clamp(5.5rem, 12vw, 9.5rem);
 }
 
