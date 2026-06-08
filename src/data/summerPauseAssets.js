@@ -1,19 +1,18 @@
 export const bannerSlides = [
   {
     image: "/banner62.png",
-    title: "",
-    subtitle: "",
+    buttonLabel: "Explore Collection",
+    buttonHref: "#desert-drive",
   },
   {
     image: "/banner63.webp",
-    title: "",
-    subtitle: "",
+    buttonLabel: "Shop The Edit",
+    buttonHref: "#open-horizon",
   },
   {
-    image:
-      "/banner64.jpg",
-    title: "",
-    subtitle: "",
+    image: "/banner64.jpg",
+    buttonLabel: "View Story",
+    buttonHref: "#summer-pause",
   },
 ];
 
