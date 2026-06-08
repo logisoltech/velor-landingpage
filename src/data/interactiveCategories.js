@@ -7,32 +7,32 @@ export const interactiveCategories = [
   {
     id: "t-shirts",
     label: "T-Shirts",
-    image: "/edit1.png",
+    image: "/tri1.png",
   },
   {
     id: "pants",
     label: "Pants",
-    image: "/edit2.png",
+    image: "/denim4.png",
   },
   {
     id: "sweatshirts",
     label: "Sweatshirts",
-    image: "/active.png",
+    image: "/ss.png",
   },
   {
     id: "shirts",
     label: "Shirts",
-    image: "/edit3.png",
+    image: "/shirts1.png",
   },
   {
     id: "jackets",
     label: "Jackets",
-    image: "/d1.webp",
+    image: "/jacket.png",
   },
   {
     id: "blazers",
     label: "Blazers",
-    image: "/f2.webp",
+    image: "/blazer.png",
   },
   {
     id: "sweaters",
