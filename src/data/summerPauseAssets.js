@@ -32,13 +32,6 @@ export const SUMMER_PAUSE_IMAGES = {
 };
 
 export const SUMMER_PAUSE_ASSETS = {
-  editorial: {
-    season: "SUMMER",
-    title: "PAUSE",
-    year: "2026",
-    copy:
-      "THE TEMPERATURE IS RISING AND THE DAYS ARE SLOWING DOWN, SETTING THE TONE FOR COMFORTABLE SILHOUETTES AND RELAXED PIECES IN AIRY COTTONS AND LIGHTWEIGHT TEXTURES.",
-  },
   featured: {
     id: "sp-featured",
     image: "/p11.png",

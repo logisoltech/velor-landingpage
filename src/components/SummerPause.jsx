@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SUMMER_PAUSE_ASSETS } from "@/data/summerPauseAssets";
 import SummerPauseBanner from "@/components/SummerPauseBanner";
+import PauseEditorialGrid from "@/components/PauseEditorialGrid";
 
 function FeaturedCard({ product }) {
   return (
@@ -56,7 +57,7 @@ function GridCard({ product }) {
 }
 
 export default function SummerPause() {
-  const { featured, gridProducts, editorial } = SUMMER_PAUSE_ASSETS;
+  const { featured, gridProducts } = SUMMER_PAUSE_ASSETS;
 
   return (
     <section className="summer-pause" aria-labelledby="summer-pause-heading">
@@ -96,16 +97,7 @@ export default function SummerPause() {
         </div>
       </div>
 
-      <div className="summer-pause__editorial">
-        <div className="summer-pause__editorial-header">
-          <span className="summer-pause__editorial-season">{editorial.season}</span>
-          <h2 id="summer-pause-heading" className="summer-pause__editorial-title">
-            {editorial.title}
-          </h2>
-          <span className="summer-pause__editorial-year">{editorial.year}</span>
-        </div>
-        <p className="summer-pause__editorial-copy">{editorial.copy}</p>
-      </div>
+      <PauseEditorialGrid />
     </section>
   );
 }
