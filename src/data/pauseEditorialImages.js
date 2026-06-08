@@ -1,6 +1,6 @@
 /**
 
- * PAUSE editorial image grid — replace image paths in public/ when final assets are ready.
+ * PAUSE editorial image grid — slider assets in /public.
 
  */
 
@@ -12,7 +12,7 @@ export const pauseEditorialImages = [
 
     id: "01",
 
-    image: "/pause1.png",
+    image: "/slider1.png",
 
     alt: "Tall editorial portrait",
 
@@ -24,7 +24,7 @@ export const pauseEditorialImages = [
 
     id: "02",
 
-    image: "/pause6.png",
+    image: "/slider2.png",
 
     alt: "Editorial portrait",
 
@@ -36,7 +36,7 @@ export const pauseEditorialImages = [
 
     id: "03",
 
-    image: "/pause11.png",
+    image: "/slider3.png",
 
     alt: "Editorial portrait",
 
@@ -48,7 +48,7 @@ export const pauseEditorialImages = [
 
     id: "04",
 
-    image: "/edit2.png",
+    image: "/slider4.png",
 
     alt: "Large fashion model portrait",
 
@@ -58,13 +58,15 @@ export const pauseEditorialImages = [
 
   {
 
-    id: "05",
+    id: "",
 
-    image: "/denim.webp",
+    image: "/slidercircle.webp",
 
-    alt: "Tall narrow vertical image",
+    alt: "Decorative circle element",
 
     className: "grid-05",
+
+    isCircle: true,
 
   },
 
@@ -72,7 +74,7 @@ export const pauseEditorialImages = [
 
     id: "06",
 
-    image: "/pause1.png",
+    image: "/slider6.png",
 
     alt: "Tall editorial portrait",
 
