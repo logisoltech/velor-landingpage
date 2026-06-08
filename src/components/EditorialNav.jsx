@@ -3,7 +3,7 @@
 import { useCallback, useState } from "react";
 import {
   categoryById,
-  editorialMarqueeRows,
+  editorialMarqueeItems,
   interactiveCategories,
 } from "@/data/interactiveCategories";
 
@@ -36,7 +36,7 @@ function CategoryWord({ id, suffix, activeId, onCategoryEnter }) {
   );
 }
 
-function MarqueeLineContent({ items, activeId, lineIndex, onCategoryEnter, duplicate = false }) {
+function MarqueeLineContent({ items, activeId, onCategoryEnter, duplicate = false }) {
   return (
     <p
       className="editorial-nav__line editorial-nav__line-content"
@@ -51,7 +51,7 @@ function MarqueeLineContent({ items, activeId, lineIndex, onCategoryEnter, dupli
             id={item.id}
             suffix={item.suffix}
             activeId={activeId}
-            onCategoryEnter={() => onCategoryEnter(item.id, lineIndex)}
+            onCategoryEnter={onCategoryEnter}
           />
         </span>
       ))}
@@ -59,59 +59,24 @@ function MarqueeLineContent({ items, activeId, lineIndex, onCategoryEnter, dupli
   );
 }
 
-function MarqueeRow({
-  lineIndex,
-  direction,
-  items,
-  activeId,
-  isPaused,
-  onCategoryEnter,
-  onRowLeave,
-}) {
-  return (
-    <div className="editorial-nav__marquee">
-      <div
-        className={`editorial-nav__track editorial-nav__track--${direction}${
-          isPaused ? " editorial-nav__track--paused" : ""
-        }`}
-        onMouseLeave={() => onRowLeave(lineIndex)}
-      >
-        <MarqueeLineContent
-          items={items}
-          activeId={activeId}
-          lineIndex={lineIndex}
-          onCategoryEnter={onCategoryEnter}
-        />
-        <MarqueeLineContent
-          items={items}
-          activeId={activeId}
-          lineIndex={lineIndex}
-          onCategoryEnter={onCategoryEnter}
-          duplicate
-        />
-      </div>
-    </div>
-  );
-}
-
 export default function EditorialNav() {
   const [activeId, setActiveId] = useState(null);
-  const [pausedRowIndex, setPausedRowIndex] = useState(null);
+  const [isMarqueePaused, setIsMarqueePaused] = useState(false);
 
   const displayCategory = categoryById[activeId] ?? defaultCategory;
 
-  const handleCategoryEnter = useCallback((id, lineIndex) => {
+  const handleCategoryEnter = useCallback((id) => {
     setActiveId(id);
-    setPausedRowIndex(lineIndex);
+    setIsMarqueePaused(true);
   }, []);
 
-  const handleRowLeave = useCallback((lineIndex) => {
-    setPausedRowIndex((current) => (current === lineIndex ? null : current));
+  const handleMarqueeLeave = useCallback(() => {
+    setIsMarqueePaused(false);
   }, []);
 
   const handleSectionLeave = useCallback(() => {
     setActiveId(null);
-    setPausedRowIndex(null);
+    setIsMarqueePaused(false);
   }, []);
 
   return (
@@ -132,18 +97,26 @@ export default function EditorialNav() {
         </div>
 
         <div className="editorial-nav__cloud">
-          {editorialMarqueeRows.map((row, lineIndex) => (
-            <MarqueeRow
-              key={`editorial-marquee-${lineIndex}`}
-              lineIndex={lineIndex}
-              direction={row.direction}
-              items={row.items}
-              activeId={activeId}
-              isPaused={pausedRowIndex === lineIndex}
-              onCategoryEnter={handleCategoryEnter}
-              onRowLeave={handleRowLeave}
-            />
-          ))}
+          <div className="editorial-nav__marquee">
+            <div
+              className={`editorial-nav__track${
+                isMarqueePaused ? " editorial-nav__track--paused" : ""
+              }`}
+              onMouseLeave={handleMarqueeLeave}
+            >
+              <MarqueeLineContent
+                items={editorialMarqueeItems}
+                activeId={activeId}
+                onCategoryEnter={handleCategoryEnter}
+              />
+              <MarqueeLineContent
+                items={editorialMarqueeItems}
+                activeId={activeId}
+                onCategoryEnter={handleCategoryEnter}
+                duplicate
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
