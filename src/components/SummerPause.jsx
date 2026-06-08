@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SUMMER_PAUSE_ASSETS } from "@/data/summerPauseAssets";
 import SummerPauseBanner from "@/components/SummerPauseBanner";
 import PauseEditorialGrid from "@/components/PauseEditorialGrid";
+import BrandCampaign from "@/components/BrandCampaign";
 
 function FeaturedCard({ product }) {
   return (
@@ -98,6 +99,7 @@ export default function SummerPause() {
       </div>
 
       <PauseEditorialGrid />
+      <BrandCampaign />
     </section>
   );
 }
