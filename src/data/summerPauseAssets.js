@@ -34,7 +34,7 @@ export const SUMMER_PAUSE_IMAGES = {
 export const SUMMER_PAUSE_ASSETS = {
   featured: {
     id: "sp-featured",
-    image: "/p11.png",
+    image: "/sus.png",
     alt: "",
   },
   gridProducts: [
