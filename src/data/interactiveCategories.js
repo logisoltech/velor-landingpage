@@ -61,25 +61,55 @@ export const interactiveCategories = [
   },
 ];
 
-/** Static multi-line layout matching the editorial reference */
-export const editorialCategoryLines = [
-  [
-    { id: "t-shirts", suffix: ", " },
-    { id: "pants", suffix: ", " },
-    { id: "sweatshirts", suffix: "," },
-  ],
-  [
-    { id: "shirts", suffix: ", " },
-    { id: "jackets", suffix: " | " },
-    { id: "blazers", suffix: ", " },
-    { id: "sweaters", suffix: "," },
-  ],
-  [
-    { id: "polo-shirts", suffix: ", " },
-    { id: "bags", suffix: ", " },
-    { id: "accessories", suffix: ", " },
-    { id: "shorts", suffix: "." },
-  ],
+const marqueeSuffix = ", ";
+
+/** Shuffled editorial marquee rows — duplicated in the track for seamless loops */
+export const editorialMarqueeRows = [
+  {
+    direction: "left",
+    items: [
+      { id: "t-shirts", suffix: marqueeSuffix },
+      { id: "pants", suffix: marqueeSuffix },
+      { id: "sweatshirts", suffix: marqueeSuffix },
+      { id: "bags", suffix: marqueeSuffix },
+      { id: "jackets", suffix: marqueeSuffix },
+      { id: "accessories", suffix: marqueeSuffix },
+      { id: "blazers", suffix: marqueeSuffix },
+      { id: "shorts", suffix: marqueeSuffix },
+      { id: "shirts", suffix: marqueeSuffix },
+      { id: "polo-shirts", suffix: marqueeSuffix },
+    ],
+  },
+  {
+    direction: "right",
+    items: [
+      { id: "pants", suffix: marqueeSuffix },
+      { id: "shirts", suffix: marqueeSuffix },
+      { id: "accessories", suffix: marqueeSuffix },
+      { id: "t-shirts", suffix: marqueeSuffix },
+      { id: "shorts", suffix: marqueeSuffix },
+      { id: "blazers", suffix: marqueeSuffix },
+      { id: "sweatshirts", suffix: marqueeSuffix },
+      { id: "bags", suffix: marqueeSuffix },
+      { id: "jackets", suffix: marqueeSuffix },
+      { id: "polo-shirts", suffix: marqueeSuffix },
+    ],
+  },
+  {
+    direction: "left",
+    items: [
+      { id: "accessories", suffix: marqueeSuffix },
+      { id: "jackets", suffix: marqueeSuffix },
+      { id: "t-shirts", suffix: marqueeSuffix },
+      { id: "sweatshirts", suffix: marqueeSuffix },
+      { id: "shirts", suffix: marqueeSuffix },
+      { id: "polo-shirts", suffix: marqueeSuffix },
+      { id: "bags", suffix: marqueeSuffix },
+      { id: "shorts", suffix: marqueeSuffix },
+      { id: "pants", suffix: marqueeSuffix },
+      { id: "blazers", suffix: marqueeSuffix },
+    ],
+  },
 ];
 
 export const categoryById = Object.fromEntries(

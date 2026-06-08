@@ -3,7 +3,7 @@
 import { useCallback, useState } from "react";
 import {
   categoryById,
-  editorialCategoryLines,
+  editorialMarqueeRows,
   interactiveCategories,
 } from "@/data/interactiveCategories";
 
@@ -36,18 +36,82 @@ function CategoryWord({ id, suffix, activeId, onCategoryEnter }) {
   );
 }
 
+function MarqueeLineContent({ items, activeId, lineIndex, onCategoryEnter, duplicate = false }) {
+  return (
+    <p
+      className="editorial-nav__line editorial-nav__line-content"
+      aria-hidden={duplicate || undefined}
+    >
+      {items.map((item, itemIndex) => (
+        <span
+          key={`${item.id}-${duplicate ? "dup" : "orig"}-${itemIndex}`}
+          className="editorial-nav__phrase"
+        >
+          <CategoryWord
+            id={item.id}
+            suffix={item.suffix}
+            activeId={activeId}
+            onCategoryEnter={() => onCategoryEnter(item.id, lineIndex)}
+          />
+        </span>
+      ))}
+    </p>
+  );
+}
+
+function MarqueeRow({
+  lineIndex,
+  direction,
+  items,
+  activeId,
+  isPaused,
+  onCategoryEnter,
+  onRowLeave,
+}) {
+  return (
+    <div className="editorial-nav__marquee">
+      <div
+        className={`editorial-nav__track editorial-nav__track--${direction}${
+          isPaused ? " editorial-nav__track--paused" : ""
+        }`}
+        onMouseLeave={() => onRowLeave(lineIndex)}
+      >
+        <MarqueeLineContent
+          items={items}
+          activeId={activeId}
+          lineIndex={lineIndex}
+          onCategoryEnter={onCategoryEnter}
+        />
+        <MarqueeLineContent
+          items={items}
+          activeId={activeId}
+          lineIndex={lineIndex}
+          onCategoryEnter={onCategoryEnter}
+          duplicate
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function EditorialNav() {
   const [activeId, setActiveId] = useState(null);
+  const [pausedRowIndex, setPausedRowIndex] = useState(null);
 
-  const displayCategory =
-    categoryById[activeId] ?? defaultCategory;
+  const displayCategory = categoryById[activeId] ?? defaultCategory;
 
-  const handleCategoryEnter = useCallback((id) => {
+  const handleCategoryEnter = useCallback((id, lineIndex) => {
     setActiveId(id);
+    setPausedRowIndex(lineIndex);
+  }, []);
+
+  const handleRowLeave = useCallback((lineIndex) => {
+    setPausedRowIndex((current) => (current === lineIndex ? null : current));
   }, []);
 
   const handleSectionLeave = useCallback(() => {
     setActiveId(null);
+    setPausedRowIndex(null);
   }, []);
 
   return (
@@ -68,22 +132,17 @@ export default function EditorialNav() {
         </div>
 
         <div className="editorial-nav__cloud">
-          {editorialCategoryLines.map((line, lineIndex) => (
-            <p
-              key={`editorial-line-${lineIndex}`}
-              className="editorial-nav__line"
-            >
-              {line.map((item) => (
-                <span key={item.id} className="editorial-nav__phrase">
-                  <CategoryWord
-                    id={item.id}
-                    suffix={item.suffix}
-                    activeId={activeId}
-                    onCategoryEnter={handleCategoryEnter}
-                  />
-                </span>
-              ))}
-            </p>
+          {editorialMarqueeRows.map((row, lineIndex) => (
+            <MarqueeRow
+              key={`editorial-marquee-${lineIndex}`}
+              lineIndex={lineIndex}
+              direction={row.direction}
+              items={row.items}
+              activeId={activeId}
+              isPaused={pausedRowIndex === lineIndex}
+              onCategoryEnter={handleCategoryEnter}
+              onRowLeave={handleRowLeave}
+            />
           ))}
         </div>
       </div>
