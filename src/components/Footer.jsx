@@ -214,6 +214,20 @@ export default function Footer() {
             </div>
           </div>
         </div>
+
+        <div className="footer__credit">
+          <p className="footer__credit-text">
+            Built by{" "}
+            <a
+              href="https://www.logisol.tech/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer__credit-link"
+            >
+              Logisol Technologies
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
