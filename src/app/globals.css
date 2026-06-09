@@ -2322,7 +2322,11 @@ a {
   }
 
   .summer-pause__collection-header {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .summer-pause__collection-description {
+    margin-top: 1rem;
   }
 
   .summer-pause__showcase {
@@ -2333,28 +2337,49 @@ a {
   }
 
   .summer-pause__media--featured {
-    aspect-ratio: 3 / 4;
+    aspect-ratio: auto;
+    height: clamp(420px, 62vh, 480px);
+    min-height: 420px;
+    background-color: transparent;
+  }
+
+  .summer-pause__media--featured .summer-pause__product-image {
+    object-fit: contain;
+    object-position: center;
+    /* Source PNGs carry large empty margins — scale clips margin, not the model */
+    transform: scale(1.12);
   }
 
   .summer-pause__mini-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem 0.875rem;
   }
 
+  .summer-pause__card--grid {
+    min-height: 260px;
+  }
+
   .summer-pause__media--grid {
-    aspect-ratio: 3 / 4;
+    aspect-ratio: auto;
+    width: 100%;
+    height: clamp(250px, 64vw, 310px);
+    background-color: transparent;
+  }
+
+  .summer-pause__media--grid .summer-pause__product-image {
+    object-fit: contain;
+    object-position: center;
+    transform: scale(1.3);
+  }
+
+  .summer-pause__info--grid {
+    padding-top: 0.5rem;
   }
 
   .summer-pause__add-icon {
+    right: 0.5rem;
+    bottom: 0.5rem;
     font-size: 1.25rem;
-  }
-
-  .summer-pause__product-title {
-    font-size: 0.75rem;
-  }
-
-  .summer-pause__product-price {
-    font-size: 0.75rem;
   }
 
   .summer-pause__info--featured,
@@ -2369,6 +2394,22 @@ a {
     padding-top: 0.625rem;
   }
 
+  .summer-pause__product-title {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+
+  .summer-pause__product-meta {
+    font-size: 0.6875rem;
+    line-height: 1.4;
+  }
+
+  .summer-pause__product-price {
+    margin-top: 0.25rem;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+
   .summer-pause__product-title,
   .summer-pause__product-price {
     width: 100%;
@@ -2376,7 +2417,7 @@ a {
   }
 
   .summer-pause__collection-footer {
-    margin-top: 2rem;
+    margin-top: 1.75rem;
   }
 
   .summer-pause__coming-soon {
